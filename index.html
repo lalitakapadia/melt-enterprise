@@ -9,7 +9,13 @@
         document.addEventListener('DOMContentLoaded', () => {
             const sections = document.querySelectorAll('section');
             const links = document.querySelectorAll('nav a');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const resourcesMenuToggle = document.getElementById('resources-menu-toggle');
+            const resourcesSubmenu = document.getElementById('resources-submenu');
+            const resourcesMenuIcon = document.getElementById('resources-menu-icon');
 
+    
             function navigateToSection(id) {
                 sections.forEach(section => {
                     section.classList.add('hidden');
@@ -17,8 +23,14 @@
                         section.classList.remove('hidden');
                     }
                 });
+    
+                // Collapse the mobile menu after navigation
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
             }
 
+    
             links.forEach(link => {
                 link.addEventListener('click', event => {
                     event.preventDefault();
@@ -26,26 +38,48 @@
                     navigateToSection(targetId);
                 });
             });
-
+    
             // Show the home section by default
             navigateToSection('home');
+    
+            // Toggle the mobile menu
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+             // Toggle Resources Sub-menu in Mobile
+            resourcesMenuToggle.addEventListener('click', () => {
+                resourcesSubmenu.classList.toggle('hidden');
+                resourcesMenuIcon.classList.toggle('rotate-180'); // Rotate arrow icon
+            });
+
         });
     </script>
+    
 </head>
 <body class="bg-gray-50 text-gray-800">
     <!-- Header -->
     <header class="bg-white shadow-lg sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center py-4">
-                <a href="#home" class="text-2xl font-bold text-blue-600">Melt Enterprise</a>
+                <a href="index.html" class="text-3xl font-bold text-blue-600">Melt Enterprise</a>
                 <nav class="hidden md:flex space-x-6">
                     <a href="#home" class="text-gray-600 hover:text-blue-600">Home</a>
                     <a href="#about" class="text-gray-600 hover:text-blue-600">About</a>
                     <a href="#services" class="text-gray-600 hover:text-blue-600">Services</a>
                     <a href="#responsibilities" class="text-gray-600 hover:text-blue-600">Responsibilities</a>
-                    <a href="#resources" class="text-gray-600 hover:text-blue-600">Resources</a>
+                    <div class="relative group">
+                        <a href="#resources" class="text-gray-600 hover:text-blue-600">Resources</a>
+                        <!-- Desktop Sub-menu -->
+                        <div class="absolute left-0  w-48 text-gray-600 shadow-lg rounded-md hidden group-hover:block">
+                            <a href="#knowledge-base" class="block px-4 py-1 text-gray-600 hover:bg-gray-100">Knowledge Base</a>
+                            <a href="#case-studies" class="block px-4 py-1 text-gray-600 hover:bg-gray-100">Case Studies</a>
+                            <a href="#blog" class="block px-4 py-1 text-gray-600 hover:bg-gray-100">Blog</a>
+                        </div>
+                    </div>
+    
                     <a href="#clients" class="text-gray-600 hover:text-blue-600">Clients</a>
-                    <a href="#contactUs" class="bg-gray-100 hover:text">Contact Us</a>
+                    <a href="#contactUs" class="text-gray-600 hover:text">Contact Us</a>
                 </nav>
                 <button class="md:hidden text-gray-600" id="mobile-menu-button">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -61,7 +95,21 @@
                 <a href="#about" class="text-gray-600 hover:text-blue-600">About</a>  
                 <a href="#services" class="text-gray-600 hover:text-blue-600">Services</a>            
                 <a href="#responsibilities" class="text-gray-600 hover:text-blue-600">Responsibilities</a>
-                <a href="#resources" class="text-gray-600 hover:text-blue-600">Resources</a>
+                   <!-- Mobile Sub-menu for Resources -->
+            <div>
+                <button class="w-full text-left text-gray-600 hover:text-blue-600 flex justify-between items-center" id="resources-menu-toggle">
+                    Resources
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transform transition-transform" id="resources-menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </button>
+                <div id="resources-submenu" class="hidden pl-4 mt-2 space-y-2">
+                    <a href="#knowledge-base" class="block text-gray-600 hover:text-blue-600">Knowledge Base</a>
+                    <a href="#case-studies" class="block text-gray-600 hover:text-blue-600">Case Studies</a>
+                    <a href="#blog" class="block text-gray-600 hover:text-blue-600">Blog</a>
+                </div>
+            </div>
+
                 <a href="#clients" class="text-gray-600 hover:text-blue-600">Clients</a>
                 <a href="#contactUs" class="text-gray-600 hover:text-blue-600">Contact Us</a>
             </nav>
@@ -213,13 +261,5 @@
         </div>
     </footer>
 
-    <script>
-        const menuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        menuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-    </script>
-</body>
+   </body>
 </html>
