@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Melt Enterprise</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <style>
+        .flag-icon {
+            width: 20px;
+            height: 15px;
+            margin-right: 8px;
+        }
+        .flag-select {
+            display: flex;
+            align-items: center;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <div class="min-h-screen flex items-center justify-center">
+        <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+            <h2 class="text-2xl font-bold text-center text-blue-600 mb-6">Sign Up</h2>
+            <form action="#" method="POST" class="space-y-6">
+                <div>
+                    <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+                    <input type="text" id="name" name="name" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                    <input type="email" id="email" name="email" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                <div>
+                    <label for="country-code" class="block text-sm font-medium text-gray-700">Country Code</label>
+                    <div class="relative">
+                        <button type="button" id="dropdownButton" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-white text-left px-3 py-2">
+                            <span id="selectedCountry" class="flag-select"><img src="https://flagcdn.com/us.svg" class="flag-icon">+1 (USA)</span>
+                        </button>
+                        <div id="dropdownMenu" class="absolute z-10 hidden bg-white shadow-lg rounded-md mt-1 w-full max-h-60 overflow-auto">
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+1" data-flag="https://flagcdn.com/us.svg"><img src="https://flagcdn.com/us.svg" class="flag-icon">+1 (USA)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+44" data-flag="https://flagcdn.com/gb.svg"><img src="https://flagcdn.com/gb.svg" class="flag-icon">+44 (UK)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+91" data-flag="https://flagcdn.com/in.svg"><img src="https://flagcdn.com/in.svg" class="flag-icon">+91 (India)</div>
+                            <!-- Add more country codes as needed -->
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+93" data-flag="https://flagcdn.com/af.svg"><img src="https://flagcdn.com/af.svg" class="flag-icon">+93 (Afghanistan)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+355" data-flag="https://flagcdn.com/al.svg"><img src="https://flagcdn.com/al.svg" class="flag-icon">+355 (Albania)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+213" data-flag="https://flagcdn.com/dz.svg"><img src="https://flagcdn.com/dz.svg" class="flag-icon">+213 (Algeria)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+376" data-flag="https://flagcdn.com/ad.svg"><img src="https://flagcdn.com/ad.svg" class="flag-icon">+376 (Andorra)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+244" data-flag="https://flagcdn.com/ao.svg"><img src="https://flagcdn.com/ao.svg" class="flag-icon">+244 (Angola)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+54" data-flag="https://flagcdn.com/ar.svg"><img src="https://flagcdn.com/ar.svg" class="flag-icon">+54 (Argentina)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+374" data-flag="https://flagcdn.com/am.svg"><img src="https://flagcdn.com/am.svg" class="flag-icon">+374 (Armenia)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+61" data-flag="https://flagcdn.com/au.svg"><img src="https://flagcdn.com/au.svg" class="flag-icon">+61 (Australia)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+43" data-flag="https://flagcdn.com/at.svg"><img src="https://flagcdn.com/at.svg" class="flag-icon">+43 (Austria)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+994" data-flag="https://flagcdn.com/az.svg"><img src="https://flagcdn.com/az.svg" class="flag-icon">+994 (Azerbaijan)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+973" data-flag="https://flagcdn.com/bh.svg"><img src="https://flagcdn.com/bh.svg" class="flag-icon">+973 (Bahrain)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+880" data-flag="https://flagcdn.com/bd.svg"><img src="https://flagcdn.com/bd.svg" class="flag-icon">+880 (Bangladesh)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+375" data-flag="https://flagcdn.com/by.svg"><img src="https://flagcdn.com/by.svg" class="flag-icon">+375 (Belarus)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+32" data-flag="https://flagcdn.com/be.svg"><img src="https://flagcdn.com/be.svg" class="flag-icon">+32 (Belgium)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+501" data-flag="https://flagcdn.com/bz.svg"><img src="https://flagcdn.com/bz.svg" class="flag-icon">+501 (Belize)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+229" data-flag="https://flagcdn.com/bj.svg"><img src="https://flagcdn.com/bj.svg" class="flag-icon">+229 (Benin)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+975" data-flag="https://flagcdn.com/bt.svg"><img src="https://flagcdn.com/bt.svg" class="flag-icon">+975 (Bhutan)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+591" data-flag="https://flagcdn.com/bo.svg"><img src="https://flagcdn.com/bo.svg" class="flag-icon">+591 (Bolivia)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+387" data-flag="https://flagcdn.com/ba.svg"><img src="https://flagcdn.com/ba.svg" class="flag-icon">+387 (Bosnia and Herzegovina)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+267" data-flag="https://flagcdn.com/bw.svg"><img src="https://flagcdn.com/bw.svg" class="flag-icon">+267 (Botswana)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+55" data-flag="https://flagcdn.com/br.svg"><img src="https://flagcdn.com/br.svg" class="flag-icon">+55 (Brazil)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+246" data-flag="https://flagcdn.com/io.svg"><img src="https://flagcdn.com/io.svg" class="flag-icon">+246 (British Indian Ocean Territory)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+673" data-flag="https://flagcdn.com/bn.svg"><img src="https://flagcdn.com/bn.svg" class="flag-icon">+673 (Brunei)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+359" data-flag="https://flagcdn.com/bg.svg"><img src="https://flagcdn.com/bg.svg" class="flag-icon">+359 (Bulgaria)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+226" data-flag="https://flagcdn.com/bf.svg"><img src="https://flagcdn.com/bf.svg" class="flag-icon">+226 (Burkina Faso)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+257" data-flag="https://flagcdn.com/bi.svg"><img src="https://flagcdn.com/bi.svg" class="flag-icon">+257 (Burundi)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+855" data-flag="https://flagcdn.com/kh.svg"><img src="https://flagcdn.com/kh.svg" class="flag-icon">+855 (Cambodia)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+237" data-flag="https://flagcdn.com/cm.svg"><img src="https://flagcdn.com/cm.svg" class="flag-icon">+237 (Cameroon)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+1" data-flag="https://flagcdn.com/ca.svg"><img src="https://flagcdn.com/ca.svg" class="flag-icon">+1 (Canada)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+238" data-flag="https://flagcdn.com/cv.svg"><img src="https://flagcdn.com/cv.svg" class="flag-icon">+238 (Cape Verde)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+236" data-flag="https://flagcdn.com/cf.svg"><img src="https://flagcdn.com/cf.svg" class="flag-icon">+236 (Central African Republic)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+235" data-flag="https://flagcdn.com/td.svg"><img src="https://flagcdn.com/td.svg" class="flag-icon">+235 (Chad)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+56" data-flag="https://flagcdn.com/cl.svg"><img src="https://flagcdn.com/cl.svg" class="flag-icon">+56 (Chile)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+86" data-flag="https://flagcdn.com/cn.svg"><img src="https://flagcdn.com/cn.svg" class="flag-icon">+86 (China)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+61" data-flag="https://flagcdn.com/cc.svg"><img src="https://flagcdn.com/cc.svg" class="flag-icon">+61 (Cocos (Keeling) Islands)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+57" data-flag="https://flagcdn.com/co.svg"><img src="https://flagcdn.com/co.svg" class="flag-icon">+57 (Colombia)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+269" data-flag="https://flagcdn.com/km.svg"><img src="https://flagcdn.com/km.svg" class="flag-icon">+269 (Comoros)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+242" data-flag="https://flagcdn.com/cg.svg"><img src="https://flagcdn.com/cg.svg" class="flag-icon">+242 (Congo)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+243" data-flag="https://flagcdn.com/cd.svg"><img src="https://flagcdn.com/cd.svg" class="flag-icon">+243 (Congo, Democratic Republic of the)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+682" data-flag="https://flagcdn.com/ck.svg"><img src="https://flagcdn.com/ck.svg" class="flag-icon">+682 (Cook Islands)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+506" data-flag="https://flagcdn.com/cr.svg"><img src="https://flagcdn.com/cr.svg" class="flag-icon">+506 (Costa Rica)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+225" data-flag="https://flagcdn.com/ci.svg"><img src="https://flagcdn.com/ci.svg" class="flag-icon">+225 (Côte d'Ivoire)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+385" data-flag="https://flagcdn.com/hr.svg"><img src="https://flagcdn.com/hr.svg" class="flag-icon">+385 (Croatia)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+53" data-flag="https://flagcdn.com/cu.svg"><img src="https://flagcdn.com/cu.svg" class="flag-icon">+53 (Cuba)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+357" data-flag="https://flagcdn.com/cy.svg"><img src="https://flagcdn.com/cy.svg" class="flag-icon">+357 (Cyprus)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+420" data-flag="https://flagcdn.com/cz.svg"><img src="https://flagcdn.com/cz.svg" class="flag-icon">+420 (Czech Republic)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+45" data-flag="https://flagcdn.com/dk.svg"><img src="https://flagcdn.com/dk.svg" class="flag-icon">+45 (Denmark)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+253" data-flag="https://flagcdn.com/dj.svg"><img src="https://flagcdn.com/dj.svg" class="flag-icon">+253 (Djibouti)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+1" data-flag="https://flagcdn.com/dm.svg"><img src="https://flagcdn.com/dm.svg" class="flag-icon">+1 (Dominica)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+1" data-flag="https://flagcdn.com/do.svg"><img src="https://flagcdn.com/do.svg" class="flag-icon">+1 (Dominican Republic)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+593" data-flag="https://flagcdn.com/ec.svg"><img src="https://flagcdn.com/ec.svg" class="flag-icon">+593 (Ecuador)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+20" data-flag="https://flagcdn.com/eg.svg"><img src="https://flagcdn.com/eg.svg" class="flag-icon">+20 (Egypt)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+503" data-flag="https://flagcdn.com/sv.svg"><img src="https://flagcdn.com/sv.svg" class="flag-icon">+503 (El Salvador)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+240" data-flag="https://flagcdn.com/gq.svg"><img src="https://flagcdn.com/gq.svg" class="flag-icon">+240 (Equatorial Guinea)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+291" data-flag="https://flagcdn.com/er.svg"><img src="https://flagcdn.com/er.svg" class="flag-icon">+291 (Eritrea)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+372" data-flag="https://flagcdn.com/ee.svg"><img src="https://flagcdn.com/ee.svg" class="flag-icon">+372 (Estonia)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+251" data-flag="https://flagcdn.com/et.svg"><img src="https://flagcdn.com/et.svg" class="flag-icon">+251 (Ethiopia)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+500" data-flag="https://flagcdn.com/fk.svg"><img src="https://flagcdn.com/fk.svg" class="flag-icon">+500 (Falkland Islands (Malvinas))</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+298" data-flag="https://flagcdn.com/fo.svg"><img src="https://flagcdn.com/fo.svg" class="flag-icon">+298 (Faroe Islands)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+679" data-flag="https://flagcdn.com/fj.svg"><img src="https://flagcdn.com/fj.svg" class="flag-icon">+679 (Fiji)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+358" data-flag="https://flagcdn.com/fi.svg"><img src="https://flagcdn.com/fi.svg" class="flag-icon">+358 (Finland)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+33" data-flag="https://flagcdn.com/fr.svg"><img src="https://flagcdn.com/fr.svg" class="flag-icon">+33 (France)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+594" data-flag="https://flagcdn.com/gf.svg"><img src="https://flagcdn.com/gf.svg" class="flag-icon">+594 (French Guiana)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+689" data-flag="https://flagcdn.com/pf.svg"><img src="https://flagcdn.com/pf.svg" class="flag-icon">+689 (French Polynesia)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+241" data-flag="https://flagcdn.com/ga.svg"><img src="https://flagcdn.com/ga.svg" class="flag-icon">+241 (Gabon)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+220" data-flag="https://flagcdn.com/gm.svg"><img src="https://flagcdn.com/gm.svg" class="flag-icon">+220 (Gambia)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+995" data-flag="https://flagcdn.com/ge.svg"><img src="https://flagcdn.com/ge.svg" class="flag-icon">+995 (Georgia)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+49" data-flag="https://flagcdn.com/de.svg"><img src="https://flagcdn.com/de.svg" class="flag-icon">+49 (Germany)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+233" data-flag="https://flagcdn.com/gh.svg"><img src="https://flagcdn.com/gh.svg" class="flag-icon">+233 (Ghana)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+350" data-flag="https://flagcdn.com/gi.svg"><img src="https://flagcdn.com/gi.svg" class="flag-icon">+350 (Gibraltar)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+30" data-flag="https://flagcdn.com/gr.svg"><img src="https://flagcdn.com/gr.svg" class="flag-icon">+30 (Greece)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+299" data-flag="https://flagcdn.com/gl.svg"><img src="https://flagcdn.com/gl.svg" class="flag-icon">+299 (Greenland)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+1" data-flag="https://flagcdn.com/gd.svg"><img src="https://flagcdn.com/gd.svg" class="flag-icon">+1 (Grenada)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+590" data-flag="https://flagcdn.com/gp.svg"><img src="https://flagcdn.com/gp.svg" class="flag-icon">+590 (Guadeloupe)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+1" data-flag="https://flagcdn.com/gu.svg"><img src="https://flagcdn.com/gu.svg" class="flag-icon">+1 (Guam)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+502" data-flag="https://flagcdn.com/gt.svg"><img src="https://flagcdn.com/gt.svg" class="flag-icon">+502 (Guatemala)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+44" data-flag="https://flagcdn.com/gg.svg"><img src="https://flagcdn.com/gg.svg" class="flag-icon">+44 (Guernsey)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+224" data-flag="https://flagcdn.com/gn.svg"><img src="https://flagcdn.com/gn.svg" class="flag-icon">+224 (Guinea)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+245" data-flag="https://flagcdn.com/gw.svg"><img src="https://flagcdn.com/gw.svg" class="flag-icon">+245 (Guinea-Bissau)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+592" data-flag="https://flagcdn.com/gy.svg"><img src="https://flagcdn.com/gy.svg" class="flag-icon">+592 (Guyana)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+509" data-flag="https://flagcdn.com/ht.svg"><img src="https://flagcdn.com/ht.svg" class="flag-icon">+509 (Haiti)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+504" data-flag="https://flagcdn.com/hn.svg"><img src="https://flagcdn.com/hn.svg" class="flag-icon">+504 (Honduras)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+852" data-flag="https://flagcdn.com/hk.svg"><img src="https://flagcdn.com/hk.svg" class="flag-icon">+852 (Hong Kong)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+36" data-flag="https://flagcdn.com/hu.svg"><img src="https://flagcdn.com/hu.svg" class="flag-icon">+36 (Hungary)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+354" data-flag="https://flagcdn.com/is.svg"><img src="https://flagcdn.com/is.svg" class="flag-icon">+354 (Iceland)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+91" data-flag="https://flagcdn.com/in.svg"><img src="https://flagcdn.com/in.svg" class="flag-icon">+91 (India)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+62" data-flag="https://flagcdn.com/id.svg"><img src="https://flagcdn.com/id.svg" class="flag-icon">+62 (Indonesia)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+98" data-flag="https://flagcdn.com/ir.svg"><img src="https://flagcdn.com/ir.svg" class="flag-icon">+98 (Iran)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+964" data-flag="https://flagcdn.com/iq.svg"><img src="https://flagcdn.com/iq.svg" class="flag-icon">+964 (Iraq)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+353" data-flag="https://flagcdn.com/ie.svg"><img src="https://flagcdn.com/ie.svg" class="flag-icon">+353 (Ireland)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+44" data-flag="https://flagcdn.com/im.svg"><img src="https://flagcdn.com/im.svg" class="flag-icon">+44 (Isle of Man)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+972" data-flag="https://flagcdn.com/il.svg"><img src="https://flagcdn.com/il.svg" class="flag-icon">+972 (Israel)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+39" data-flag="https://flagcdn.com/it.svg"><img src="https://flagcdn.com/it.svg" class="flag-icon">+39 (Italy)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+1" data-flag="https://flagcdn.com/jm.svg"><img src="https://flagcdn.com/jm.svg" class="flag-icon">+1 (Jamaica)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+81" data-flag="https://flagcdn.com/jp.svg"><img src="https://flagcdn.com/jp.svg" class="flag-icon">+81 (Japan)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+44" data-flag="https://flagcdn.com/je.svg"><img src="https://flagcdn.com/je.svg" class="flag-icon">+44 (Jersey)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+962" data-flag="https://flagcdn.com/jo.svg"><img src="https://flagcdn.com/jo.svg" class="flag-icon">+962 (Jordan)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+7" data-flag="https://flagcdn.com/kz.svg"><img src="https://flagcdn.com/kz.svg" class="flag-icon">+7 (Kazakhstan)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+254" data-flag="https://flagcdn.com/ke.svg"><img src="https://flagcdn.com/ke.svg" class="flag-icon">+254 (Kenya)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+686" data-flag="https://flagcdn.com/ki.svg"><img src="https://flagcdn.com/ki.svg" class="flag-icon">+686 (Kiribati)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+850" data-flag="https://flagcdn.com/kp.svg"><img src="https://flagcdn.com/kp.svg" class="flag-icon">+850 (Korea, Democratic People's Republic of)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+82" data-flag="https://flagcdn.com/kr.svg"><img src="https://flagcdn.com/kr.svg" class="flag-icon">+82 (Korea, Republic of)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+965" data-flag="https://flagcdn.com/kw.svg"><img src="https://flagcdn.com/kw.svg" class="flag-icon">+965 (Kuwait)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+996" data-flag="https://flagcdn.com/kg.svg"><img src="https://flagcdn.com/kg.svg" class="flag-icon">+996 (Kyrgyzstan)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+856" data-flag="https://flagcdn.com/la.svg"><img src="https://flagcdn.com/la.svg" class="flag-icon">+856 (Lao People's Democratic Republic)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+371" data-flag="https://flagcdn.com/lv.svg"><img src="https://flagcdn.com/lv.svg" class="flag-icon">+371 (Latvia)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+961" data-flag="https://flagcdn.com/lb.svg"><img src="https://flagcdn.com/lb.svg" class="flag-icon">+961 (Lebanon)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+266" data-flag="https://flagcdn.com/ls.svg"><img src="https://flagcdn.com/ls.svg" class="flag-icon">+266 (Lesotho)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+231" data-flag="https://flagcdn.com/lr.svg"><img src="https://flagcdn.com/lr.svg" class="flag-icon">+231 (Liberia)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+218" data-flag="https://flagcdn.com/ly.svg"><img src="https://flagcdn.com/ly.svg" class="flag-icon">+218 (Libya)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+423" data-flag="https://flagcdn.com/li.svg"><img src="https://flagcdn.com/li.svg" class="flag-icon">+423 (Liechtenstein)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+370" data-flag="https://flagcdn.com/lt.svg"><img src="https://flagcdn.com/lt.svg" class="flag-icon">+370 (Lithuania)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+352" data-flag="https://flagcdn.com/lu.svg"><img src="https://flagcdn.com/lu.svg" class="flag-icon">+352 (Luxembourg)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+853" data-flag="https://flagcdn.com/mo.svg"><img src="https://flagcdn.com/mo.svg" class="flag-icon">+853 (Macao)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+389" data-flag="https://flagcdn.com/mk.svg"><img src="https://flagcdn.com/mk.svg" class="flag-icon">+389 (Macedonia, the Former Yugoslav Republic of)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+261" data-flag="https://flagcdn.com/mg.svg"><img src="https://flagcdn.com/mg.svg" class="flag-icon">+261 (Madagascar)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+265" data-flag="https://flagcdn.com/mw.svg"><img src="https://flagcdn.com/mw.svg" class="flag-icon">+265 (Malawi)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+60" data-flag="https://flagcdn.com/my.svg"><img src="https://flagcdn.com/my.svg" class="flag-icon">+60 (Malaysia)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+960" data-flag="https://flagcdn.com/mv.svg"><img src="https://flagcdn.com/mv.svg" class="flag-icon">+960 (Maldives)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+223" data-flag="https://flagcdn.com/ml.svg"><img src="https://flagcdn.com/ml.svg" class="flag-icon">+223 (Mali)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+356" data-flag="https://flagcdn.com/mt.svg"><img src="https://flagcdn.com/mt.svg" class="flag-icon">+356 (Malta)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+692" data-flag="https://flagcdn.com/mh.svg"><img src="https://flagcdn.com/mh.svg" class="flag-icon">+692 (Marshall Islands)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+596" data-flag="https://flagcdn.com/mq.svg"><img src="https://flagcdn.com/mq.svg" class="flag-icon">+596 (Martinique)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+222" data-flag="https://flagcdn.com/mr.svg"><img src="https://flagcdn.com/mr.svg" class="flag-icon">+222 (Mauritania)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+230" data-flag="https://flagcdn.com/mu.svg"><img src="https://flagcdn.com/mu.svg" class="flag-icon">+230 (Mauritius)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+262" data-flag="https://flagcdn.com/yt.svg"><img src="https://flagcdn.com/yt.svg" class="flag-icon">+262 (Mayotte)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+52" data-flag="https://flagcdn.com/mx.svg"><img src="https://flagcdn.com/mx.svg" class="flag-icon">+52 (Mexico)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+691" data-flag="https://flagcdn.com/fm.svg"><img src="https://flagcdn.com/fm.svg" class="flag-icon">+691 (Micronesia, Federated States of)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+373" data-flag="https://flagcdn.com/md.svg"><img src="https://flagcdn.com/md.svg" class="flag-icon">+373 (Moldova, Republic of)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+377" data-flag="https://flagcdn.com/mc.svg"><img src="https://flagcdn.com/mc.svg" class="flag-icon">+377 (Monaco)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+976" data-flag="https://flagcdn.com/mn.svg"><img src="https://flagcdn.com/mn.svg" class="flag-icon">+976 (Mongolia)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+382" data-flag="https://flagcdn.com/me.svg"><img src="https://flagcdn.com/me.svg" class="flag-icon">+382 (Montenegro)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+1" data-flag="https://flagcdn.com/ms.svg"><img src="https://flagcdn.com/ms.svg" class="flag-icon">+1 (Montserrat)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+212" data-flag="https://flagcdn.com/ma.svg"><img src="https://flagcdn.com/ma.svg" class="flag-icon">+212 (Morocco)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+258" data-flag="https://flagcdn.com/mz.svg"><img src="https://flagcdn.com/mz.svg" class="flag-icon">+258 (Mozambique)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+95" data-flag="https://flagcdn.com/mm.svg"><img src="https://flagcdn.com/mm.svg" class="flag-icon">+95 (Myanmar)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+264" data-flag="https://flagcdn.com/na.svg"><img src="https://flagcdn.com/na.svg" class="flag-icon">+264 (Namibia)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+674" data-flag="https://flagcdn.com/nr.svg"><img src="https://flagcdn.com/nr.svg" class="flag-icon">+674 (Nauru)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+977" data-flag="https://flagcdn.com/np.svg"><img src="https://flagcdn.com/np.svg" class="flag-icon">+977 (Nepal)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+31" data-flag="https://flagcdn.com/nl.svg"><img src="https://flagcdn.com/nl.svg" class="flag-icon">+31 (Netherlands)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+687" data-flag="https://flagcdn.com/nc.svg"><img src="https://flagcdn.com/nc.svg" class="flag-icon">+687 (New Caledonia)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+64" data-flag="https://flagcdn.com/nz.svg"><img src="https://flagcdn.com/nz.svg" class="flag-icon">+64 (New Zealand)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+505" data-flag="https://flagcdn.com/ni.svg"><img src="https://flagcdn.com/ni.svg" class="flag-icon">+505 (Nicaragua)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+227" data-flag="https://flagcdn.com/ne.svg"><img src="https://flagcdn.com/ne.svg" class="flag-icon">+227 (Niger)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+234" data-flag="https://flagcdn.com/ng.svg"><img src="https://flagcdn.com/ng.svg" class="flag-icon">+234 (Nigeria)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+683" data-flag="https://flagcdn.com/nu.svg"><img src="https://flagcdn.com/nu.svg" class="flag-icon">+683 (Niue)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+672" data-flag="https://flagcdn.com/nf.svg"><img src="https://flagcdn.com/nf.svg" class="flag-icon">+672 (Norfolk Island)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+850" data-flag="https://flagcdn.com/kp.svg"><img src="https://flagcdn.com/kp.svg" class="flag-icon">+850 (North Korea)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+1" data-flag="https://flagcdn.com/mp.svg"><img src="https://flagcdn.com/mp.svg" class="flag-icon">+1 (Northern Mariana Islands)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+47" data-flag="https://flagcdn.com/no.svg"><img src="https://flagcdn.com/no.svg" class="flag-icon">+47 (Norway)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+968" data-flag="https://flagcdn.com/om.svg"><img src="https://flagcdn.com/om.svg" class="flag-icon">+968 (Oman)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+92" data-flag="https://flagcdn.com/pk.svg"><img src="https://flagcdn.com/pk.svg" class="flag-icon">+92 (Pakistan)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+680" data-flag="https://flagcdn.com/pw.svg"><img src="https://flagcdn.com/pw.svg" class="flag-icon">+680 (Palau)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+970" data-flag="https://flagcdn.com/ps.svg"><img src="https://flagcdn.com/ps.svg" class="flag-icon">+970 (Palestine, State of)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+507" data-flag="https://flagcdn.com/pa.svg"><img src="https://flagcdn.com/pa.svg" class="flag-icon">+507 (Panama)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+675" data-flag="https://flagcdn.com/pg.svg"><img src="https://flagcdn.com/pg.svg" class="flag-icon">+675 (Papua New Guinea)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+595" data-flag="https://flagcdn.com/py.svg"><img src="https://flagcdn.com/py.svg" class="flag-icon">+595 (Paraguay)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+51" data-flag="https://flagcdn.com/pe.svg"><img src="https://flagcdn.com/pe.svg" class="flag-icon">+51 (Peru)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+63" data-flag="https://flagcdn.com/ph.svg"><img src="https://flagcdn.com/ph.svg" class="flag-icon">+63 (Philippines)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+64" data-flag="https://flagcdn.com/nz.svg"><img src="https://flagcdn.com/nz.svg" class="flag-icon">+64 (Pitcairn)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+48" data-flag="https://flagcdn.com/pl.svg"><img src="https://flagcdn.com/pl.svg" class="flag-icon">+48 (Poland)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+351" data-flag="https://flagcdn.com/pt.svg"><img src="https://flagcdn.com/pt.svg" class="flag-icon">+351 (Portugal)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+1" data-flag="https://flagcdn.com/pr.svg"><img src="https://flagcdn.com/pr.svg" class="flag-icon">+1 (Puerto Rico)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+974" data-flag="https://flagcdn.com/qa.svg"><img src="https://flagcdn.com/qa.svg" class="flag-icon">+974 (Qatar)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+262" data-flag="https://flagcdn.com/re.svg"><img src="https://flagcdn.com/re.svg" class="flag-icon">+262 (Réunion)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+40" data-flag="https://flagcdn.com/ro.svg"><img src="https://flagcdn.com/ro.svg" class="flag-icon">+40 (Romania)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+7" data-flag="https://flagcdn.com/ru.svg"><img src="https://flagcdn.com/ru.svg" class="flag-icon">+7 (Russian Federation)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+250" data-flag="https://flagcdn.com/rw.svg"><img src="https://flagcdn.com/rw.svg" class="flag-icon">+250 (Rwanda)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+290" data-flag="https://flagcdn.com/sh.svg"><img src="https://flagcdn.com/sh.svg" class="flag-icon">+290 (Saint Helena, Ascension and Tristan da Cunha)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+1" data-flag="https://flagcdn.com/kn.svg"><img src="https://flagcdn.com/kn.svg" class="flag-icon">+1 (Saint Kitts and Nevis)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+1" data-flag="https://flagcdn.com/lc.svg"><img src="https://flagcdn.com/lc.svg" class="flag-icon">+1 (Saint Lucia)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+590" data-flag="https://flagcdn.com/mf.svg"><img src="https://flagcdn.com/mf.svg" class="flag-icon">+590 (Saint Martin (French part))</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+508" data-flag="https://flagcdn.com/pm.svg"><img src="https://flagcdn.com/pm.svg" class="flag-icon">+508 (Saint Pierre and Miquelon)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+1" data-flag="https://flagcdn.com/vc.svg"><img src="https://flagcdn.com/vc.svg" class="flag-icon">+1 (Saint Vincent and the Grenadines)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+685" data-flag="https://flagcdn.com/ws.svg"><img src="https://flagcdn.com/ws.svg" class="flag-icon">+685 (Samoa)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+378" data-flag="https://flagcdn.com/sm.svg"><img src="https://flagcdn.com/sm.svg" class="flag-icon">+378 (San Marino)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+239" data-flag="https://flagcdn.com/st.svg"><img src="https://flagcdn.com/st.svg" class="flag-icon">+239 (Sao Tome and Principe)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+966" data-flag="https://flagcdn.com/sa.svg"><img src="https://flagcdn.com/sa.svg" class="flag-icon">+966 (Saudi Arabia)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+221" data-flag="https://flagcdn.com/sn.svg"><img src="https://flagcdn.com/sn.svg" class="flag-icon">+221 (Senegal)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+381" data-flag="https://flagcdn.com/rs.svg"><img src="https://flagcdn.com/rs.svg" class="flag-icon">+381 (Serbia)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+248" data-flag="https://flagcdn.com/sc.svg"><img src="https://flagcdn.com/sc.svg" class="flag-icon">+248 (Seychelles)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+232" data-flag="https://flagcdn.com/sl.svg"><img src="https://flagcdn.com/sl.svg" class="flag-icon">+232 (Sierra Leone)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+65" data-flag="https://flagcdn.com/sg.svg"><img src="https://flagcdn.com/sg.svg" class="flag-icon">+65 (Singapore)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+421" data-flag="https://flagcdn.com/sk.svg"><img src="https://flagcdn.com/sk.svg" class="flag-icon">+421 (Slovakia)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+386" data-flag="https://flagcdn.com/si.svg"><img src="https://flagcdn.com/si.svg" class="flag-icon">+386 (Slovenia)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+677" data-flag="https://flagcdn.com/sb.svg"><img src="https://flagcdn.com/sb.svg" class="flag-icon">+677 (Solomon Islands)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+252" data-flag="https://flagcdn.com/so.svg"><img src="https://flagcdn.com/so.svg" class="flag-icon">+252 (Somalia)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+27" data-flag="https://flagcdn.com/za.svg"><img src="https://flagcdn.com/za.svg" class="flag-icon">+27 (South Africa)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+500" data-flag="https://flagcdn.com/gs.svg"><img src="https://flagcdn.com/gs.svg" class="flag-icon">+500 (South Georgia and the South Sandwich Islands)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+211" data-flag="https://flagcdn.com/ss.svg"><img src="https://flagcdn.com/ss.svg" class="flag-icon">+211 (South Sudan)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+34" data-flag="https://flagcdn.com/es.svg"><img src="https://flagcdn.com/es.svg" class="flag-icon">+34 (Spain)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+94" data-flag="https://flagcdn.com/lk.svg"><img src="https://flagcdn.com/lk.svg" class="flag-icon">+94 (Sri Lanka)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+249" data-flag="https://flagcdn.com/sd.svg"><img src="https://flagcdn.com/sd.svg" class="flag-icon">+249 (Sudan)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+597" data-flag="https://flagcdn.com/sr.svg"><img src="https://flagcdn.com/sr.svg" class="flag-icon">+597 (Suriname)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+47" data-flag="https://flagcdn.com/sj.svg"><img src="https://flagcdn.com/sj.svg" class="flag-icon">+47 (Svalbard and Jan Mayen)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+268" data-flag="https://flagcdn.com/sz.svg"><img src="https://flagcdn.com/sz.svg" class="flag-icon">+268 (Swaziland)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+46" data-flag="https://flagcdn.com/se.svg"><img src="https://flagcdn.com/se.svg" class="flag-icon">+46 (Sweden)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+41" data-flag="https://flagcdn.com/ch.svg"><img src="https://flagcdn.com/ch.svg" class="flag-icon">+41 (Switzerland)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+963" data-flag="https://flagcdn.com/sy.svg"><img src="https://flagcdn.com/sy.svg" class="flag-icon">+963 (Syrian Arab Republic)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+886" data-flag="https://flagcdn.com/tw.svg"><img src="https://flagcdn.com/tw.svg" class="flag-icon">+886 (Taiwan)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+992" data-flag="https://flagcdn.com/tj.svg"><img src="https://flagcdn.com/tj.svg" class="flag-icon">+992 (Tajikistan)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+255" data-flag="https://flagcdn.com/tz.svg"><img src="https://flagcdn.com/tz.svg" class="flag-icon">+255 (Tanzania, United Republic of)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+66" data-flag="https://flagcdn.com/th.svg"><img src="https://flagcdn.com/th.svg" class="flag-icon">+66 (Thailand)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+670" data-flag="https://flagcdn.com/tl.svg"><img src="https://flagcdn.com/tl.svg" class="flag-icon">+670 (Timor-Leste)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+228" data-flag="https://flagcdn.com/tg.svg"><img src="https://flagcdn.com/tg.svg" class="flag-icon">+228 (Togo)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+690" data-flag="https://flagcdn.com/tk.svg"><img src="https://flagcdn.com/tk.svg" class="flag-icon">+690 (Tokelau)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+676" data-flag="https://flagcdn.com/to.svg"><img src="https://flagcdn.com/to.svg" class="flag-icon">+676 (Tonga)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+1" data-flag="https://flagcdn.com/tt.svg"><img src="https://flagcdn.com/tt.svg" class="flag-icon">+1 (Trinidad and Tobago)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+216" data-flag="https://flagcdn.com/tn.svg"><img src="https://flagcdn.com/tn.svg" class="flag-icon">+216 (Tunisia)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+90" data-flag="https://flagcdn.com/tr.svg"><img src="https://flagcdn.com/tr.svg" class="flag-icon">+90 (Turkey)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+993" data-flag="https://flagcdn.com/tm.svg"><img src="https://flagcdn.com/tm.svg" class="flag-icon">+993 (Turkmenistan)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+1" data-flag="https://flagcdn.com/tc.svg"><img src="https://flagcdn.com/tc.svg" class="flag-icon">+1 (Turks and Caicos Islands)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+688" data-flag="https://flagcdn.com/tv.svg"><img src="https://flagcdn.com/tv.svg" class="flag-icon">+688 (Tuvalu)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+256" data-flag="https://flagcdn.com/ug.svg"><img src="https://flagcdn.com/ug.svg" class="flag-icon">+256 (Uganda)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+380" data-flag="https://flagcdn.com/ua.svg"><img src="https://flagcdn.com/ua.svg" class="flag-icon">+380 (Ukraine)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+971" data-flag="https://flagcdn.com/ae.svg"><img src="https://flagcdn.com/ae.svg" class="flag-icon">+971 (United Arab Emirates)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+44" data-flag="https://flagcdn.com/gb.svg"><img src="https://flagcdn.com/gb.svg" class="flag-icon">+44 (United Kingdom)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+1" data-flag="https://flagcdn.com/us.svg"><img src="https://flagcdn.com/us.svg" class="flag-icon">+1 (United States)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+598" data-flag="https://flagcdn.com/uy.svg"><img src="https://flagcdn.com/uy.svg" class="flag-icon">+598 (Uruguay)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+998" data-flag="https://flagcdn.com/uz.svg"><img src="https://flagcdn.com/uz.svg" class="flag-icon">+998 (Uzbekistan)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+678" data-flag="https://flagcdn.com/vu.svg"><img src="https://flagcdn.com/vu.svg" class="flag-icon">+678 (Vanuatu)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+58" data-flag="https://flagcdn.com/ve.svg"><img src="https://flagcdn.com/ve.svg" class="flag-icon">+58 (Venezuela)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+84" data-flag="https://flagcdn.com/vn.svg"><img src="https://flagcdn.com/vn.svg" class="flag-icon">+84 (Viet Nam)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+681" data-flag="https://flagcdn.com/wf.svg"><img src="https://flagcdn.com/wf.svg" class="flag-icon">+681 (Wallis and Futuna)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+212" data-flag="https://flagcdn.com/eh.svg"><img src="https://flagcdn.com/eh.svg" class="flag-icon">+212 (Western Sahara)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+967" data-flag="https://flagcdn.com/ye.svg"><img src="https://flagcdn.com/ye.svg" class="flag-icon">+967 (Yemen)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+260" data-flag="https://flagcdn.com/zm.svg"><img src="https://flagcdn.com/zm.svg" class="flag-icon">+260 (Zambia)</div>
+                            <div class="flag-select px-3 py-2 hover:bg-gray-100 cursor-pointer" data-value="+263" data-flag="https://flagcdn.com/zw.svg"><img src="https://flagcdn.com/zw.svg" class="flag-icon">+263 (Zimbabwe)</div>
+                        </div>
+                    </div>
+                    <input type="hidden" id="country-code" name="country-code" value="+1">
+                </div>
+                <div>
+                    <label for="phone" class="block text-sm font-medium text-gray-700">Phone Number</label>
+                    <input type="text" id="phone" name="phone" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                <div class="g-recaptcha" data-sitekey="your-site-key"></div>
+                <div class="text-center">
+                    <button type="submit" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-md font-medium hover:bg-blue-700">Sign Up</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const dropdownButton = document.getElementById('dropdownButton');
+            const dropdownMenu = document.getElementById('dropdownMenu');
+            const selectedCountry = document.getElementById('selectedCountry');
+            const countryCodeInput = document.getElementById('country-code');
+
+            dropdownButton.addEventListener('click', () => {
+                dropdownMenu.classList.toggle('hidden');
+            });
+
+            dropdownMenu.addEventListener('click', (event) => {
+                const target = event.target.closest('.flag-select');
+                if (target) {
+                    const value = target.getAttribute('data-value');
+                    const flag = target.getAttribute('data-flag');
+                    selectedCountry.innerHTML = `<img src="${flag}" class="flag-icon">${value}`;
+                    countryCodeInput.value = value;
+                    dropdownMenu.classList.add('hidden');
+                }
+            });
+
+            document.addEventListener('click', (event) => {
+                if (!dropdownButton.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                    dropdownMenu.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
