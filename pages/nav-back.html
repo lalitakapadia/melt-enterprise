@@ -1,0 +1,30 @@
+<div class="flex justify-between items-center py-4 bg-blue-600 ">
+                
+                
+    <div id="nav-bar"
+        class="absolute inset-2 top-0 rounded-3xl ring-1 ring-inset ring-black/5 bg-[linear-gradient(115deg,var(--tw-gradient-stops))] from-[#fff1be] from-[28%] via-[#ee87cb] via-[70%] to-[#b060ff] sm:bg-[linear-gradient(145deg,var(--tw-gradient-stops))]">
+        <div> <a href="index.html" class="text-3xl font-bold text-gray-800 ">Company Name</a></div>
+        <div>
+            <nav class="hidden md:flex space-x-6">
+            <a href="#home" data-page="home"  class="text-gray-600 hover:text-violet-900">Home</a>
+            <a href="#about" data-page="about"  class="text-gray-600 hover:text-violet-900">About</a>
+            <a href="#services" data-page="services"  class="text-gray-600 hover:text-violet-900 ">Services</a>
+            <a href="#responsibilities" data-page="responsibilities"  class="text-gray-600 hover:text-violet-900">Responsibilities</a>
+            <div class="relative group">
+                <a href="#resources" class="text-gray-600 hover:text-violet-900">Resources</a>
+                <!-- Desktop Sub-menu -->
+                <div class="absolute left-0 w-48 text-teal-600 shadow-lg rounded-md hidden group-hover:block">
+                    <a href="#metal-inspection" data-page="metalinspection" class="block px-4 py-1 text-gray-600 hovertext-violet-900">Metal Inspection</a>
+                    <a href="#metal-import" data-page="metalimport" class="block px-4 py-1 text-gray-600 hover:text-violet-900">Metal Import</a>
+                    
+                </div>
+            </div>
+            <a href="#clients" data-page="clients"  class="text-gray-600 hover:text-violet-900">Clients</a>
+            <a href="#contactUs" data-page="contactUs"  class="text-gray-600 hover:text-violet-900">Contact Us</a>
+        </nav>
+        </div>
+    </div><button class="md:hidden text-gray-600" id="mobile-menu-button">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+        </svg>
+    </button>
